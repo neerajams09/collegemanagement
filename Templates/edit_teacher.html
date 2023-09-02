@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit teacher</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #aa{
+            background-color: pink;
+            width: 350px;
+        }
+        #bb{
+            background-color: darkolivegreen;
+        }
+    </style
+    </style>
+</head>
+<body>
+    <div class="container-fluid" id="bb"><h2 style="color: white;">COCHIN COLLEGE</h2>
+        <h6><a href="{% url 'logout' %}" style="background-color: white; color: black; float: right; font-family: Georgia, 'Times New Roman', Times, serif;">Log out</a></h6>
+        <br>
+       </div><br>
+   <center> <div class="card-body" id="aa">
+        
+    <form action="{% url 'edit_teacher' %}" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     <div class="was-validated">
+        <center><h3 style="color: brown; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">EDIT DETAILS</h3></center>
+         <div class="form-group">
+             <label for="fname" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>First Name:</b></label>
+             <input class="form-control" type="text" name="fname" id="fname" value="{{users.user.first_name}}" required> 
+             
+         </div>
+         <div class="form-group">
+             <label for="lname" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Last Name:</b></label>
+             <input class="form-control" type="text" name="lname" id="lname" value="{{users.user.last_name}}" required>
+
+         </div>
+         <div class="form-group">
+             <label for="mob" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Mobile Number:</b></label>
+             <input class="form-control" type="text" name="mob" id="mob" value="{{users.number}}" required>
+           
+         </div>
+         <div class="form-group">
+             <label for="age" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Age:</b></label>
+             <input class="form-control" type="text" name="age" id="age" value="{{users.age}}" required>
+          
+         </div>
+         <div class="form-group">
+             <label for="address" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Address:</b></label>
+             <textarea name="address" id="address" cols="30" rows="3" class="form-control" required>{{users.address}}</textarea>
+       
+         </div>
+         <div class="form-group">
+             <label for="uname" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Username:</b></label>
+             <input class="form-control" type="text" name="uname" id="uname" value="{{users.user.username}}" required>
+         
+         </div>
+         <div class="form-group">
+             <label for="mail" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Email:</b></label>
+             <input class="form-control" type="mail" name="mail" id="mail" value="{{users.user.email}}" required>
+        
+         </div>
+         <img src="{{users.image.url}}" alt="" width="100px"><br>{{users.image}}
+         <div class="form-group">
+             <label for="file" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Image:</b></label>
+             <input class="form-control" type="file" name="file" accept="image/" id="file" >
+           
+         </div>
+       <div>
+        <label for="" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"><b>Course</b></label>
+        <select class="form-control" name="sel" id="" value="{{ users.course.course_name }}">
+            <!-- <option value="">Select Your Course</option> -->
+            {% for c in course %}
+            <option value="{{c.id}}">{{c.course_name}}</option>
+            {% endfor %}
+        </select>
+      </div>
+     </div><br>
+         <div>
+             <input type="submit" name="submit" class="btn btn-primary w-100" id=""><br>
+             <br>
+         </div>
+         
+     </div>
+    </form>
+   </div> <br><br>
+</center>
+</body>
+</html>

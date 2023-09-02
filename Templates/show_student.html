@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #bc{
+            margin-top: 50px;
+        }
+        a{
+            color: white;
+        }
+        #showstud{
+            background-color: black;
+            border-radius: 10px;
+        }
+        body{
+            background-color: bisque;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar-nav navbar-expand-sm bg-light">
+        <div class="container-fluid" style="background-color: darkolivegreen;">
+            <h5 style="color: white;">COCHIN COLLEGE</h5>
+            <ul class="navbar-nav nav-pills" style="float: right;">
+                <li class="nav-item">
+                    <a href="{% url 'course' %}" class="nav-link" id="addcrs">Add course</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'student' %}" class="nav-link" id="addstud">Add Student</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'show_details' %}" class="nav-link" id="showstud">Student details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'teacher_det' %}" class="nav-link">Teacher details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <center>
+        <form action="">
+            <div class="container-fluid" id="bc">
+                <h2 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: red;">Student details</h2>
+                <table border="2" style="background-color: skyblue;">
+                    <thead>
+                        <tr>
+                            <th>STUDENT NAME</th>
+                            <th>ADDRESS</th>
+                            <th>AGE</th>
+                            <th>JOINING DATE</th>
+                            <th>COURSE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in students %}
+                        <tr>
+                            <td>{{s.student_name}}</td>
+                            <td>{{s.student_address}}</td>
+                            <td>{{s.student_age}}</td>
+                            <td>{{s.joining_date}}</td>
+                            <td>{{s.course.course_name}}</td>
+                            <td><a href="{% url 'edit' s.id %}">EDIT</a><br>
+                                <a href="{% url 'delete_student' s.id%}">DELETE</a>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </form>
+    </center>
+</body>
+
+</html>

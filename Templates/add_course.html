@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+         body {
+            background-color: pink;
+        }
+
+        #aa {
+            background-color: white;
+            width: 500px;
+            height: 250px;
+            margin-top: 190px;
+            border-radius: 20px;
+        }
+        #addcrs{
+            background-color: black;
+            border-radius: 10px;
+        }
+        a{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-nav navbar-expand-sm bg-light">
+        <div class="container-fluid" style="background-color: darkolivegreen;">
+            <h5 style="color: white;">COCHIN COLLEGE</h5>
+            <ul class="navbar-nav nav-pills" style="float: right;">
+                <li class="nav-item">
+                    <a href="{% url 'course' %}" class="nav-link" id="addcrs">Add course</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'student' %}" class="nav-link" id="addstud">Add Student</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'show_details' %}" class="nav-link">Student details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'teacher_det' %}" class="nav-link">Teacher details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <center>
+        <form action="{% url 'add_course' %}" method="post">
+            {% csrf_token %}
+            <div class="container-fluid" id="aa">
+                <br>
+                <h2 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: brown;"><b>Add Course</b></h2><br>
+                <table>
+                    <tr>
+                        <td><label for="" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Course</label></td>
+                        <td><input type="text" name="course_name" placeholder="Enter the course name"><br></td>
+                    </tr>
+                    <tr>
+                        <td><label for="" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Fee</label></td>
+                        <td><input type="number" name="fee" placeholder="Enter the course fee"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit"class="btn btn-warning w-100">Add</button></td>
+                    </tr>
+                </table>
+
+            </div>
+        </form>
+    </center>
+</body>
+</html>

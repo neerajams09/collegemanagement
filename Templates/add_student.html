@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #aa{
+            margin-top: 50px;
+            background-color: darkolivegreen;
+            width: 500px;
+            border-radius: 20px;
+        }
+        a{
+            color: white;
+        }
+        #addstud{
+            background-color: black;
+            border-radius: 10px;
+        }
+        body{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body style="background-image: url('{% static " images/back.jpg" %}');">
+    <nav class="navbar-nav navbar-expand-sm bg-light">
+        <div class="container-fluid" style="background-color: darkolivegreen;">
+            <h5 style="color: white;">COCHIN COLLEGE</h5>
+            <ul class="navbar-nav nav-pills" style="float: right;">
+                <li class="nav-item">
+                    <a href="{% url 'course' %}" class="nav-link">Add course</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'student' %}" class="nav-link" id="addstud">Add Student</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'show_details' %}" class="nav-link">Student details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'teacher_det' %}" class="nav-link">Teacher details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <form action="{% url 'add_student' %}" method="post">
+        {% csrf_token%}
+        <center>
+            <div class="container-fluid" id="aa">
+                <br>
+                <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: rgb(248, 248, 22);"><b>Add student</b></h2><br>
+                <table>
+                    <tr>
+                        <td><label for="" style="color: white;">Name</label></td>
+                        <td><input type="text" name="name" placeholder="student name" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="" style="color: white;">Address</label></td>
+                        <td><input type="text" name="address" placeholder=" student Address" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="" style="color: white;">Age</label></td>
+                        <td><input type="number" name="age" placeholder="Student age" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="" style="color: white;">Date</label></td>
+                        <td><input type="date" name="date" placeholder="joining date" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="" style="color: white;">Course</label></td>
+                        <td><select name="sel" class="form-control">
+                           {% for c in course %}
+                           <option value="{{c.id}}">{{c.course_name}}</option>
+                           {% endfor%}
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit" class="btn btn-warning w-100">ADD</button></td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+        </center>
+    </form>
+</body>
+</html>

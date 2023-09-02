@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #bb{
+            background-color: darkolivegreen;
+        }
+    </style>
+</head>
+<body style="background-image: url('{% static "images/text.jpg" %}');">
+
+    <div class="container-fluid" id="bb"><h2 style="color: white;">COCHIN COLLEGE</h2>
+        <h6><a href="{% url 'logout' %}" style="background-color: white; color: black; float: right; font-family: Georgia, 'Times New Roman', Times, serif;">Log out</a></h6>
+        <br>
+       </div>
+<br><br>
+<div class="container-fluid">
+    {% for message in messages %}
+    <h5>
+        <div class="alert alert-danger mt-5">{{message}}</div>
+    </h5>
+    {% endfor %}
+</div>
+        <div class="container-fluid" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col" style="margin-left: 300px;">
+                    <a href="{% url 'profile' %}"><img src="{{'static/images/v.jpg'}} " alt="" class="w-25"></a>
+                    <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">VIEW PROFILE</p>
+                </div>
+                <div class="col">
+                    <a href="{% url 'edit_teacher' %}"><img src="{{'static/images/edit.webp'}}" alt="" class="w-25"></a>
+                    <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">EDIT PROFILE</p>
+                </div>
+            </div><br>
+           </div>
+       
+</body>
+</html>

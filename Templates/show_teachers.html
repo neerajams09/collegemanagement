@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #bb{
+            background-color: darkolivegreen;
+        }
+        a{
+            color:white;
+        }
+        #showt{
+            background-color: black;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-nav navbar-expand-sm bg-light">
+        <div class="container-fluid" style="background-color: darkolivegreen;">
+            <h5 style="color: white;">COCHIN COLLEGE</h5>
+            <ul class="navbar-nav nav-pills" style="float: right;">
+                <li class="nav-item">
+                    <a href="{% url 'course' %}" class="nav-link" id="addcrs">Add course</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'student' %}" class="nav-link" id="addstud">Add Student</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'show_details' %}" class="nav-link" id="showstud">Student details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'teacher_det' %}" class="nav-link" id="showt">Teacher details</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <center>
+    <h1 class="text-center text-primary">Teacher Details</h1>
+    <table class="table table-borderless table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Mobile</td>
+                <td>Address</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td>Image</td>
+                <td>Course </td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody class="table-success">
+            {% for s in studen %}
+            <tr>
+                <td>{{s.user.first_name}} {{s.user.last_name}}</td>
+                <td>{{s.age}}</td>
+                <td>{{s.number}}</td>
+                <td>{{s.address}}</td>
+                <td>{{s.user.username}}</td>
+                <td>{{s.user.email}}</td>
+                
+                <td>
+                    <img src="{{s.image.url}}" style="width: 5vw;" alt=""><br>
+                    {{s.image}}
+                </td>
+                <td>{{s.course.course_name}}</td>
+                <td>
+                    <a href="{% url 'delete_teacher' s.user.id %}" class="btn btn-warning"><i class="fas fa-trash"></i>Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+           
+        </tbody>
+    </table>
+  </center>
+</body>
+</html>

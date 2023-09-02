@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: darkgray;">
+    <form action="{% url 'edit_student' stud.id  %}" method="post">
+        {% csrf_token%}
+        <center>
+            <div class="container-fluid" id="aa">
+                <br>
+                <h2 style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"><b>Edit details</b></h2><br>
+                <table>
+                    <tr>
+                        <td><label for="">Name</label></td>
+                        <td><input type="text" name="name"  class="form-control" value="{{stud.student_name}}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Address</label></td>
+                        <td><input type="text" name="address"  class="form-control" value="{{stud.student_address}}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Age</label></td>
+                        <td><input type="number" name="age" class="form-control" value="{{stud.student_age}}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Date</label></td>
+                        <td><input type="date" name="date"  class="form-control" value="{{stud.joining_date|date:'Y-m-d'}}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Course</label></td>
+                        <td><select name="sel" class="form-control">
+                           {% for c in course %}
+                           {% if c.course_name == stud.course.course_name %}
+                           <option value="{{c.id}}" selected>{{c.course_name}}</option>
+                           {% else %}
+                           <option value="{{c.id}}">{{c.course_name}}</option>
+                           {% endif %}
+                           {% endfor%}
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button type="submit" class="btn btn-warning w-100">Update</button></td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+        </center>
+    </form>
+</body>
+</html>

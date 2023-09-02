@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #a{
+            background-color: rgb(211, 211, 231);
+            width: 300px;
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+        #b{
+            background-color: rgb(211, 211, 231);
+            width: 300px;
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+        #c{
+            background-color: rgb(211, 211, 231);
+            width: 300px;
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+        #d{
+            background-color: rgb(211, 211, 231);
+            width: 300px;
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+        #bb{
+            background-color: darkolivegreen;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('{% static " images/bh5.jpg" %}');">
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        <div class="container-fluid">
+            {% for message in messages %}
+            <h5>
+                <div class="alert alert-danger mt-5">{{message}}</div>
+            </h5>
+            {% endfor %}
+        </div>
+        <div class="container-fluid" id="bb"><h2 style="color: white;">COCHIN COLLEGE</h2>
+             <h6><a href="{% url 'logout' %}" style="background-color: white; color: black; float: right; font-family: Georgia, 'Times New Roman', Times, serif;">Log out</a></h6>
+             <br>
+            </div>
+            
+        <br>
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col" style="margin-left: 100px;">
+                        <a href="{% url 'student' %}"><img src="{{'static/images/student.webp'}}" alt="" class="w-25"></a>
+                        <p>ADD STUDENT</p>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'course' %}"><img src="{{'static/images/course.jpg'}}" alt="" class="w-25"></a>
+                        <p>ADD COURSE</p>
+                    </div>
+                </div><br>
+                <div class="row" style="margin-left: 100px;">
+                    <div class="col">
+                        <a href="{% url 'teacher_det' %}"><img src="{{'static/images/teachers.png'}}" alt="" class="w-25"></a>
+                        <p>SHOW TEACHERS</p>
+                    </div>
+                    <div class="col">
+                        <a href="{% url 'show_details' %}"><img src="{{'static/images/students.jpg'}}" alt="" class="w-25"></a>
+                        <p>SHOW STUDENTS</p>
+                    </div>
+                </div>
+              </div>
+           
+                
+            
+   
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color: skyblue;
+        }
+        #cc{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: darkolivegreen;"><h5 style="color: white;">COCHIN COLLEGE</h5>
+    </div>
+    <center>
+        <div class="card" id="cc">
+            <div class="card-body">
+                <pre class="card-text"><img src="{{users.image.url}}" style="width: 15vw;" alt=""><br></pre>
+                <h3 class="card-title ">{{users.user.first_name}} {{users.user.last_name}}</h3>
+                <pre class="card-text">Username : {{users.user.username}}</pre>
+                <pre class="card-text">Email    : {{users.user.email}}</pre>
+                <pre class="card-text">Mobile   : {{users.number}}</pre>
+                <pre class="card-text">Age      :{{users.age}}</pre>
+                <pre class="card-text">Address  : {{users.address}}</pre>
+                <pre class="card-text">Course   : {{users.course.course_name}}</pre>
+                <a href="{% url 'teacherhome' %}" class="btn btn-primary">Back</a>
+    
+            </div>
+        </div>
+        <br><br>
+    </center>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #link{
+            background-color: rgba(11, 101, 71);
+            width: 300px;
+            margin-top: 100px;
+            border-radius: 20px;
+            margin-left: 300px;
+           
+        }
+        a{
+            background-color: black;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body style="background-image: url('{% static "images/aa.jpg" %}');">
+    
+    <form action="{% url 'log' %}" method="post">
+        {% csrf_token %}
+       <div class="container-fluid" id="aa">
+        <h2 style="color: white; background-color:black; font-family:Georgia, 'Times New Roman', Times, serif;" >COCHIN COLLEGE</h2><a href="{% url 'signup' %}" style="float: right;">Sign up</a>
+        </div>
+        <div class="container-fluid">
+            {% for message in messages %}
+            <h5>
+                <div class="alert alert-danger mt-5">{{message}}</div>
+            </h5>
+            {% endfor %}
+        </div>
+        <div class="container-fluid" id="link">
+            <br>
+            <h3 style=" font-family:  Georgia, 'Times New Roman', Times, serif; color:white; background-color: black;">Login Here!!</h3><br>
+            <center>
+            <input type="text" name="username" class="form-control" required placeholder="username"><br><br>
+            <input type="password" name="password" class="form-control" required placeholder="Password"><br><br>
+            <button class="btn btn-warning">Login</button>
+            </center>
+            <br>
+        </div>
+    </form>
+</body>
+
+</html>
